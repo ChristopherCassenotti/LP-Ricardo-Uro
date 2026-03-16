@@ -1,24 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --background: #14181F;
+  --background: #14181f;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
-  --font-mono: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #14181F;
+    --background: #14181f;
     --foreground: #ededed;
+    --gradient-start: #008f3c; /* Ex: Verde Green Washer */
+    --gradient-end: #02c2f2;
+    --text-gradient: linear-gradient(
+      to right,
+      var(--gradient-start),
+      var(--gradient-end)
+    );
+
+    --brand-dark: #14181f;
+    --brand-green: #008f3c;
+    --brand-cyan: #02c2f2;
+
+    /* O degradê completo */
+    --line-gradient: linear-gradient(
+      90deg,
+      var(--brand-dark) 0%,
+      var(--brand-green) 35%,
+      var(--brand-cyan) 65%,
+      var(--brand-dark) 100%
+    );
   }
 }
 
+@layer components {
+  .bg-line-gradient {
+    background: var(--line-gradient);
+  }
+
+  .gradient-text {
+    background: var(--text-gradient);
+    /* Estas propriedades fazem o fundo aparecer apenas onde tem texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", sans-serif;
+  }
+}
 body {
   background: var(--background);
   color: var(--foreground);
