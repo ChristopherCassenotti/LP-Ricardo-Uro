@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full flex flex-row items-center justify-between px-10 sm:px-20 py-5 bg-background/40 backdrop-blur-md border-b border-white/5 z-50">
-      <img src="/logoGreen.png" alt="Logo da Lavanderia Green Washer" className="w-40 md:w-50"/>
+      <img src="/logoWasher.png" alt="Logo da Lavanderia Green Washer" className="w-40 md:w-50"/>
 
       <nav className="hidden lg:flex gap-10 text-[#D2D2D2] font-bold text-xl">
         <Link href="">Home</Link>
@@ -48,7 +48,7 @@ export default function Header() {
         lg:hidden
       `}
       >
-        <div className="flex flex-col bg-[#14181f] p-10 gap-6 text-xl h-screen font-bold">
+        <div className="flex flex-col bg-brand-dark p-10 gap-6 text-xl h-screen font-bold">
           <button onClick={toggleMenu} className="self-end text-green-700 p-2">
             <IoMdClose size={32} />
           </button>

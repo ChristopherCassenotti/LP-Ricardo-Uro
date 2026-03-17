@@ -62,9 +62,9 @@ export default function AboutSection() {
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <article data-aos="fade-right">
             <header className="mb-6">
-              <p className="mb-3 text-md text-[#008F3C] font-medium uppercase tracking-widest text-primary">
+              <span className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C]">
                 Quem somos
-              </p>
+              </span>
 
               <h2
                 id="sobre-titulo"
@@ -105,7 +105,7 @@ export default function AboutSection() {
 
           <aside
             data-aos="fade-left"
-            className="relative"
+            className="relative"  
             aria-label="Galeria de imagens da Green Washer"
           >
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_110px] sm:items-center">

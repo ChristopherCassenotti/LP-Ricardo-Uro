@@ -37,14 +37,18 @@
     background: var(--line-gradient);
   }
 
+  .linear-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
   .gradient-text {
     background: var(--text-gradient);
-    /* Estas propriedades fazem o fundo aparecer apenas onde tem texto */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
   }
+
   h1,
   h2,
   h3,
@@ -53,7 +57,13 @@
   h6 {
     font-family: "Space Grotesk", sans-serif;
   }
+
+  .glow-center {
+    box-shadow: 0 0 40px 5px rgba(0, 143, 60, 0.25);
+    border: 10px solid #181D23;
+  }
 }
+
 body {
   background: var(--background);
   color: var(--foreground);

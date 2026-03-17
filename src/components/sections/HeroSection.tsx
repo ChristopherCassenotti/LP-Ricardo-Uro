@@ -8,6 +8,7 @@ import {
   FaRegClock,
   FaMagic,
   FaWhatsapp,
+  FaMouse,
 } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -110,6 +111,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <div
+        className="absolute left-1/2 bottom-0 animate-bounce"
+        aria-hidden="true"
+      >
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 mb-2">
+          <div className="w-1 h-3 bg-white/50 rounded-full" />
+        </div>
+      </div>
+      <div className="absolute bottom-0 h-0.5 w-full bg-line-gradient opacity-30 mt-20" />
     </section>
   );
 }
