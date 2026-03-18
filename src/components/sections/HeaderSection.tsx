@@ -1,6 +1,6 @@
 "use client";
 
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
@@ -12,20 +12,27 @@ export default function Header() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="fixed top-0 left-0 w-full flex flex-row items-center justify-between px-10 sm:px-20 py-5 bg-background/40 backdrop-blur-md border-b border-white/5 z-50">
-      <img src="/logoWasher.png" alt="Logo da Lavanderia Green Washer" className="w-40 md:w-50"/>
+    <header className="fixed top-0 left-0 w-full flex flex-row items-center justify-between px-10 sm:px-20 bg-background/40 backdrop-blur-md border-b border-white/5 z-50">
+      <img
+        src="/logoWasher.png"
+        alt="Logo da Lavanderia Green Washer"
+        className="w-40 md:w-50"
+      />
 
       <nav className="hidden lg:flex gap-10 text-[#D2D2D2] font-bold text-xl">
-        <Link href="">Home</Link>
+        <Link href="#home">Home</Link>
         <Link href="#sobre">Sobre</Link>
-        <Link href="">Diferenciais</Link>
-        <Link href="">Processo</Link>
-        <Link href="">Unidade</Link>
-        <Link href="">FAQ</Link>
+        <Link href="#diferenciais">Diferenciais</Link>
+        <Link href="#processo">Processo</Link>
+        <Link href="#unidades">Unidade</Link>
+        <Link href="#faq">FAQ</Link>
       </nav>
 
       {/*Botão de Whats PC*/}
-      <Link href="http://wa.me/+554999132974" className="hidden lg:flex border-2 py-3 rounded-2xl hover:bg-[#008F3C] hover:border-[#008F3C] transition-all duration-300 cursor-pointer">
+      <Link
+        href="http://wa.me/+554999132974"
+        className="hidden lg:flex border-2 py-3 rounded-2xl hover:bg-[#008F3C] hover:border-[#008F3C] transition-all duration-300 cursor-pointer"
+      >
         <button className="w-50 flex justify-center gap-2 text-xl items-center cursor-pointer">
           <FaWhatsapp />
           Fale Conosco
@@ -48,35 +55,57 @@ export default function Header() {
         lg:hidden
       `}
       >
-        <div className="flex flex-col bg-brand-dark p-10 gap-6 text-xl h-screen font-bold">
+        <nav className="flex flex-col bg-[#14181F] p-10 gap-6 text-xl h-screen font-bold">
+
           <button onClick={toggleMenu} className="self-end text-green-700 p-2">
             <IoMdClose size={32} />
           </button>
-          <Link href="#Home" onClick={toggleMenu}>
+
+          <span className="text-sm text-gray-400">
+            Menu <hr className="w-40" />
+          </span>
+          <Link href="#home" onClick={toggleMenu}>
             Home
           </Link>
           <Link href="#sobre" onClick={toggleMenu}>
             Sobre
           </Link>
-          <Link href="#servicos" onClick={toggleMenu}>
+          <Link href="#diferenciais" onClick={toggleMenu}>
             Diferenciais
           </Link>
-          <Link href="#unidades" onClick={toggleMenu}>
+          <Link href="#processo" onClick={toggleMenu}>
             Processo
           </Link>
-          <Link href="#contato" onClick={toggleMenu}>
+          <Link href="#unidades" onClick={toggleMenu}>
             Unidade
           </Link>
-          <Link href="#contato" onClick={toggleMenu}>
+          <Link href="#faq" onClick={toggleMenu}>
             FAQ
           </Link>
 
-          <Link href="#" className="">
+          <span className="text-sm text-gray-400 mt-2">
+            Contato <hr className="w-40" />
+          </span>
+          <Link href="#" className="border-2 w-fit rounded-4xl flex p-3">
             <button>
               <FaWhatsapp size={30} />
             </button>
           </Link>
-        </div>
+
+          <span className="text-sm text-gray-400 mt-2">
+            Redes Sociais <hr className="w-40" />
+          </span>
+          <Link href="#" className="border-2 w-fit rounded-4xl flex p-3">
+            <button>
+              <FaInstagram size={30} />
+            </button>
+          </Link>
+          <Link href="#" className="border-2 w-fit rounded-4xl flex p-3">
+            <button>
+              <FaFacebook size={30} />
+            </button>
+          </Link>
+        </nav>
       </div>
     </header>
   );

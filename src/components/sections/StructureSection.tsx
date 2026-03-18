@@ -7,7 +7,7 @@ export default function StructureSection() {
   return (
     <section 
       aria-labelledby="structure-title" 
-      className="w-full bg-[#14181F] py-24 flex flex-col items-center overflow-hidden px-10"
+      className="w-full bg-[#14181F] py-10 flex flex-col items-center overflow-hidden px-10"
     >
       {/* Cabeçalho Semântico */}
       <header className="mb-12 text-center px-6" data-aos="fade-up">

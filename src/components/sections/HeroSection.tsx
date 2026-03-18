@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#14181F]">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#14181F]">
       {/* Background com Otimização Next.js */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -73,7 +73,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
             <Link
-              href="https://wa.me/seunumeroaqui"
+              href="http://wa.me/+554999132974"
               className="bg-[#008F3C] hover:bg-green-700/0 hover:border text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
             >
               <FaWhatsapp size={18} />
@@ -112,10 +112,10 @@ export default function Hero() {
         </div>
       </div>
       <div
-        className="absolute left-1/2 bottom-0 animate-bounce"
+        className="absolute left-1/2 bottom-0 hidden md:flex animate-bounce"
         aria-hidden="true"
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 mb-2">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 mb-2 hide">
           <div className="w-1 h-3 bg-white/50 rounded-full" />
         </div>
       </div>

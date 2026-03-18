@@ -58,9 +58,9 @@ export default function AboutSection() {
       className="section-padding"
       aria-labelledby="sobre-titulo"
     >
-      <div className="section-container p-10 md:p-20">
+      <div className="section-container px-10 md:px-20 py-10">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-          <article data-aos="fade-right">
+          <article data-aos="fade-right" className="flex gap-5 flex-col">
             <header className="mb-6">
               <span className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C]">
                 Quem somos
