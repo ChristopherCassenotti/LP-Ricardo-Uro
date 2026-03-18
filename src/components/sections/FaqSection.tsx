@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { IoIosArrowDown } from "react-icons/io";
 
 const faqs = [
   {
@@ -80,7 +81,7 @@ export default function FAQSection() {
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
-                    ▼
+                    <IoIosArrowDown size={22}/>
                   </span>
                 </button>
 

@@ -24,14 +24,14 @@ export default function Footer() {
               Lavanderia industrial e hospitalar especializada. Higiene,
               qualidade e pontualidade em cada ciclo de lavagem.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-between sm:justify-start">
               {socialLinks.map(({Icon, href}, i) => (
                 <a
                   key={i}
                   href={href}
                   className="w-10 h-10 rounded-lg glass-card flex items-center justify-center hover:border-primary/40 transition-colors duration-300"
                 >
-                  <Icon size={18} className="text-muted-foreground" />
+                  <Icon size={24} className="text-muted-foreground" />
                 </a>
               ))}
             </div>

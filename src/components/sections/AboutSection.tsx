@@ -14,7 +14,7 @@ const highlights = [
 
 const images = [
   {
-    src: "/bo.png",
+    src: "/greenWasher.webp",
     alt: "Fachada da Green Washer Lavanderia Industrial e Hospitalar",
   },
   {
@@ -108,7 +108,7 @@ export default function AboutSection() {
             className="relative"  
             aria-label="Galeria de imagens da Green Washer"
           >
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_110px] sm:items-center">
+            <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_110px] sm:items-center ">
               <figure className="relative rounded-2xl p-2 shadow-2xl shadow-[#19313B]">
                 {" "}
                 {/* Adicionado relative aqui */}

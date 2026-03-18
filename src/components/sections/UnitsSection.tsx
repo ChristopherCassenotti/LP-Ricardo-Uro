@@ -8,10 +8,10 @@ import "aos/dist/aos.css";
 
 export default function UnitsSection() {
   const images = [
-    { src: "/bo.png", alt: "Fachada da Green Washer" },
-    { src: "/bo.png", alt: "Vista lateral" },
-    { src: "/bo.png", alt: "Entrada" },
-    { src: "/bo.png", alt: "Estrutura externa" },
+    { src: "/maquina.jpg", alt: "Fachada da Green Washer" },
+    { src: "/maquina.jpg", alt: "Vista lateral" },
+    { src: "/maquina.jpg", alt: "Entrada" },
+    { src: "/maquina.jpg", alt: "Estrutura externa" },
   ];
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -46,7 +46,7 @@ export default function UnitsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* LADO ESQUERDO: INFO E MAPA */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
+          <div className="lg:col-span-5 flex flex-col gap-6">
             <article
               className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md relative overflow-hidden group shadow-2xl"
               data-aos="fade-right"
@@ -83,7 +83,7 @@ export default function UnitsSection() {
 
             {/* Mapa */}
             <div
-              className="rounded-3xl overflow-hidden border border-white/10 h-85 relative shadow-2xl bg-slate-900"
+              className="rounded-3xl overflow-hidden border border-white/10 h-115 relative shadow-2xl bg-slate-900"
               data-aos="fade-right"
               data-aos-delay="200"
             >
@@ -105,20 +105,20 @@ export default function UnitsSection() {
 
           {/* LADO DIREITO: GALERIA COMPLETA */}
           <aside
-            className="lg:col-span-8 flex flex-col gap-4"
+            className="lg:col-span-7 flex flex-col gap-4"
             data-aos="fade-left"
           >
             {/* Imagem Principal */}
             <figure className="relative rounded-3xl p-2 shadow-2xl shadow-[#19313B] bg-white/5 border border-white/10 w-full">
-              <div className="relative aspect-video md:aspect-square lg:aspect-video max-h-125 overflow-hidden rounded-2xl bg-[#0B0F14]">
+              <div className="relative w-full aspect-square overflow-hidden rounded-2xl max-h-140 bg-[#0B0F14]">
                 <Image
                   src={images[currentImage].src}
                   alt={images[currentImage].alt}
                   fill
-                  className="object-cover transition-all duration-500"
+                  className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
               {/* Indicadores Pills */}
@@ -129,7 +129,7 @@ export default function UnitsSection() {
                     onClick={() => setCurrentImage(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       currentImage === index
-                        ? "w-6 bg-[#00CCFF]"
+                        ? "w-6 bg-[#ffffff]"
                         : "w-2 bg-white/40"
                     }`}
                   />

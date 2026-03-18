@@ -57,7 +57,7 @@ export default function CTASection(){
             >
             <Link
               href="https://wa.me/seunumeroaqui"
-              className="bg-[#008F3C] hover:bg-green-700/0 hover:border text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
+              className="bg-[#008F3C] hover:bg-green-700/0 border-[#008F3C] border hover:border-white text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
             >
               <FaWhatsapp size={18} />
               Solicite Orçamento

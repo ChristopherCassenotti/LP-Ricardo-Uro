@@ -102,7 +102,7 @@ export default function ProcessSection() {
                     </h3>
                   </header>
 
-                  <p className="text-sm text-slate-400 leading-relaxed max-w-[280px] md:max-w-50">
+                  <p className="text-sm text-slate-400 leading-relaxed max-w-70 md:max-w-50">
                     {item.description}
                   </p>
                 </div>

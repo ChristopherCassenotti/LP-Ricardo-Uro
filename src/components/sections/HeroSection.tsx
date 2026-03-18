@@ -6,10 +6,9 @@ import Link from "next/link";
 import {
   FaShieldAlt,
   FaRegClock,
-  FaMagic,
   FaWhatsapp,
-  FaMouse,
 } from "react-icons/fa";
+import { FiCpu } from "react-icons/fi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -27,14 +26,14 @@ export default function Hero() {
       {/* Background com Otimização Next.js */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/bo.png" // Certifique-se que a imagem está na pasta public
+          src="/greenWasher.webp" // Certifique-se que a imagem está na pasta public
           alt="Lavanderia Industrial Green Washer - Higienização Profissional"
           fill
           priority
-          className="object-cover opacity-30"
+          className="object-cover opacity-30 blur-xs"
         />
         {/* Overlays para leitura e profundidade */}
-        <div className="absolute inset-0 bg-linear-to-b from-[#14181F] via-transparent to-[#14181F]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#14181F] via-[#14181F]/50 to-[#14181F]" />
       </div>
 
       {/* Elementos Decorativos (Glow) */}
@@ -74,7 +73,7 @@ export default function Hero() {
           >
             <Link
               href="http://wa.me/+554999132974"
-              className="bg-[#008F3C] hover:bg-green-700/0 hover:border text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
+              className="bg-[#008F3C] hover:bg-green-700/0 border-[#008F3C] border hover:border-white text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
             >
               <FaWhatsapp size={18} />
               Solicite Orçamento
@@ -96,7 +95,7 @@ export default function Hero() {
             {[
               { icon: FaShieldAlt, label: "Higiene Certificada" },
               { icon: FaRegClock, label: "Entrega no Prazo" },
-              { icon: FaMagic, label: "Tecnologia de Ponta" },
+              { icon: FiCpu, label: "Tecnologia de Ponta" },
             ].map((item, index) => (
               <div
                 key={index}

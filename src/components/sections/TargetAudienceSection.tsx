@@ -84,7 +84,7 @@ export default function TargetAudienceSection() {
               )}
 
               {/* Overlay de Brilho sutil ao hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#008F3C]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-br from-[#008F3C]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
@@ -100,7 +100,7 @@ export default function TargetAudienceSection() {
                   </h3>
                 </div>
 
-                <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-[450px]">
+                <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-112.5">
                   {item.description}
                 </p>
               </div>
