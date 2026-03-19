@@ -48,61 +48,81 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq">
-      <div className="max-w-3xl mx-auto p-10">
-        <div data-aos="fade-up" className="text-center mb-12">
-          <span className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-[#008F3C]">
+    <section id="faq" aria-labelledby="faq-title">
+      <div className="mx-auto max-w-3xl p-10">
+        <header data-aos="fade-up" className="mb-12 text-center">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-[#008F3C]">
             Dúvidas frequentes
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold">
-            Perguntas <span className="gradient-text">Frequentes</span>
-          </h2>
-        </div>
+          </p>
 
-        <div data-aos="fade-up" data-aos-delay="200" className="space-y-5">
+          <h2 id="faq-title" className="font-display text-3xl font-bold md:text-4xl">
+            Perguntas <span className="gradient-text">frequentes</span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-muted-foreground">
+            Tire dúvidas sobre coleta, entrega, tipos de tecidos atendidos,
+            higiene hospitalar e funcionamento da lavanderia industrial da Green Washer.
+          </p>
+        </header>
+
+        <ul
+          data-aos="fade-up"
+          data-aos-delay="200"
+          className="space-y-5"
+          aria-label="Lista de perguntas frequentes"
+        >
           {faqs.map((faq, index) => {
             const isOpen = openItem === index;
+            const questionId = `faq-question-${index}`;
+            const contentId = `faq-content-${index}`;
 
             return (
-              <div
-                key={index}
-                className="px-8 bg-[#181D23] shadow-xl rounded-xl overflow-hidden"
+              <li
+                key={faq.question}
+                className="overflow-hidden rounded-xl bg-[#181D23] px-8 shadow-xl"
               >
-                <button
-                  type="button"
-                  onClick={() => toggleItem(index)}
-                  className="w-full flex items-center cursor-pointer justify-between text-left font-display font-semibold text-base hover:text-primary transition-colors py-6"
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-content-${index}`}
-                >
-                  <span>{faq.question}</span>
-                  <span
-                    className={`ml-4 transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                <h3 className="m-0">
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(index)}
+                    className="flex w-full cursor-pointer items-center justify-between py-6 text-left font-display text-base font-semibold transition-colors hover:text-primary"
+                    aria-expanded={isOpen}
+                    aria-controls={contentId}
+                    id={questionId}
                   >
-                    <IoIosArrowDown size={22}/>
-                  </span>
-                </button>
+                    <span>{faq.question}</span>
+                    <span
+                      className={`ml-4 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <IoIosArrowDown size={22} />
+                    </span>
+                  </button>
+                </h3>
 
                 <div
-                  id={`faq-content-${index}`}
+                  id={contentId}
+                  role="region"
+                  aria-labelledby={questionId}
                   className={`grid transition-all duration-300 ease-in-out ${
                     isOpen ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="leading-relaxed text-muted-foreground">
                       {faq.answer}
                     </p>
                   </div>
                 </div>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
-      <div className="h-0.5 w-full bg-line-gradient opacity-30 mt-20" />
+
+      <div className="mt-20 h-0.5 w-full bg-line-gradient opacity-30" />
     </section>
   );
 }

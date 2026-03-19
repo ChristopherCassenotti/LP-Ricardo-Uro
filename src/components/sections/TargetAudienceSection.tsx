@@ -1,39 +1,43 @@
 "use client";
 
 import { useEffect } from "react";
-import { Hotel, Factory, Hospital } from "lucide-react"; 
+import { Hotel, Factory, Hospital } from "lucide-react";
 import { BiSpa } from "react-icons/bi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const audiences = [
   {
-    title: "Hospitais e Clínicas",
-    description: "Higienização com rigor bacteriológico e barreira sanitária, garantindo a eliminação de patógenos e a segurança total de pacientes e profissionais de saúde.",
+    title: "Hospitais e clínicas",
+    description:
+      "Higienização com alto rigor para enxovais e peças utilizadas em ambientes de saúde, com processos padronizados, segurança operacional e atenção à barreira sanitária.",
     icon: Hospital,
     delay: 100,
-    bgImage: "/bo.png", // Deixe vazio "" se não quiser imagem
+    bgImage: "/targetaudience/hospital.webp",
   },
   {
-    title: "Hotéis e Pousadas",
-    description: "Enxovais impecáveis, macios e com brancura renovada. Logística ágil para garantir que sua operação nunca pare e seus hóspedes tenham o máximo conforto.",
+    title: "Hotéis e pousadas",
+    description:
+      "Lavagem profissional de enxovais com maciez, brancura e padronização, além de logística ágil para manter a operação e a experiência do hóspede em alto nível.",
     icon: Hotel,
     delay: 200,
-    bgImage: "/hotel-bg.jpg",
+    bgImage: "/targetaudience/hotel.webp",
   },
   {
     title: "Indústrias",
-    description: "Lavagem técnica de uniformes e tecidos industriais com remoção de sujidades pesadas, preservando a durabilidade das peças e a imagem da sua empresa.",
+    description:
+      "Lavagem técnica de uniformes e tecidos industriais com foco em remoção de sujidades pesadas, durabilidade das peças e apresentação profissional da equipe.",
     icon: Factory,
     delay: 300,
-    bgImage: "", // Exemplo sem imagem (usa apenas o gradiente)
+    bgImage: "/targetaudience/industria.webp",
   },
   {
-    title: "Clínicas Estéticas e Spas",
-    description: "Cuidado delicado com toalhas e roupões, utilizando produtos dermatologicamente testados que transmitem acolhimento e higiene absoluta aos seus clientes.",
+    title: "Clínicas estéticas e spas",
+    description:
+      "Cuidado especializado com toalhas, roupões e peças de uso frequente, garantindo higiene, conforto e uma apresentação impecável para o atendimento ao cliente.",
     icon: BiSpa,
     delay: 400,
-    bgImage: "/spa-bg.jpg",
+    bgImage: "/targetaudience/spa.webp",
   },
 ];
 
@@ -45,75 +49,91 @@ export default function TargetAudienceSection() {
   return (
     <section
       id="publico-alvo"
-      className="py-10 bg-background text-white overflow-hidden"
+      className="overflow-hidden bg-background py-10 text-white"
       aria-labelledby="audience-title"
     >
-      <div className="container mx-auto px-6 max-w-7xl">
-        <header className="text-center mb-16" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C] mb-4">
-            Público-Alvo
+      <div className="container mx-auto max-w-7xl px-6">
+        <header className="mb-16 text-center" data-aos="fade-up">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C]">
+            Público-alvo
           </p>
-          <h2 id="audience-title" className="text-3xl md:text-5xl font-extrabold">
-            Atendemos empresas que <span className="gradient-text">não podem errar</span>
+
+          <h2
+            id="audience-title"
+            className="text-3xl font-extrabold md:text-5xl"
+          >
+            Atendemos empresas que{" "}
+            <span className="gradient-text">não podem errar</span>
           </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-400 md:text-lg">
+            A Green Washer atende operações que exigem alto padrão de higiene,
+            padronização, agilidade e segurança no cuidado com enxovais,
+            uniformes e tecidos profissionais.
+          </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {audiences.map((item, index) => (
-            <article
-              key={index}
-              className="relative group overflow-hidden rounded-3xl border border-white/5 p-8 transition-all duration-500 hover:border-[#00CCFF]/30 shadow-2xl min-h-[320px] flex flex-col justify-center"
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2" aria-label="Segmentos atendidos pela Green Washer">
+          {audiences.map((item) => (
+            <li
+              key={item.title}
+              className="group relative flex min-h-[320px] flex-col justify-center overflow-hidden rounded-3xl border border-white/5 p-8 shadow-2xl transition-all duration-500 hover:border-[#00CCFF]/30"
               data-aos="fade-up"
               data-aos-delay={item.delay}
               style={{
-                // Gradiente que deixa o centro mais claro/transparente e as pontas na cor #141C24
-                background: `bg-linear- from-[#141C24] via-[#141C24]/0 to-[#141C24])`,
+                background:
+                  "linear-gradient(135deg, #141C24 0%, rgba(20,28,36,0.92) 45%, rgba(20,28,36,0.78) 100%)",
               }}
             >
-              {/* CAMADA DE IMAGEM DE FUNDO (OPCIONAL) */}
               {item.bgImage && (
-                <div 
-                  className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 grayscale group-hover:grayscale-0"
+                <div
+                  className="absolute inset-0 z-0 opacity-20 grayscale transition-opacity duration-500 group-hover:opacity-30 group-hover:grayscale-0"
                   style={{
                     backgroundImage: `url(${item.bgImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    mixBlendMode: 'overlay'
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    mixBlendMode: "overlay",
                   }}
+                  aria-hidden="true"
                 />
               )}
 
-              {/* Overlay de Brilho sutil ao hover */}
-              <div className="absolute inset-0 bg-linear-to-br from-[#008F3C]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div
+                className="absolute inset-0 bg-linear-to-br from-[#008F3C]/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              />
 
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#008F3C]/10 border border-[#008F3C]/20">
-                    <item.icon
-                      size={28}
-                      className="text-[#008F3C]"
-                      aria-hidden="true"
-                    />
+                <div className="mb-6 flex items-center gap-4">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#008F3C]/20 bg-[#008F3C]/10"
+                    aria-hidden="true"
+                  >
+                    <item.icon size={28} className="text-[#008F3C]" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#00CCFF] transition-colors">
+
+                  <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#00CCFF] md:text-2xl">
                     {item.title}
                   </h3>
                 </div>
 
-                <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-112.5">
+                <p className="max-w-[450px] text-sm leading-relaxed text-slate-400 md:text-base">
                   {item.description}
                 </p>
               </div>
 
-              {/* Marca d'água decorativa */}
-              <div className="absolute -bottom-6 -right-6 opacity-[0.4] group-hover:opacity-[0.08] transition-all duration-700 -rotate-15 group-hover:-rotate-8">
+              <div
+                className="absolute -bottom-6 -right-6 -rotate-[15deg] opacity-[0.04] transition-all duration-700 group-hover:-rotate-[8deg] group-hover:opacity-[0.08]"
+                aria-hidden="true"
+              >
                 <item.icon size={160} className="text-[#008F3C]" />
               </div>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <div className="h-0.5 w-full bg-line-gradient opacity-30 mt-20" />
+
+      <div className="mt-20 h-0.5 w-full bg-line-gradient opacity-30" />
     </section>
   );
 }

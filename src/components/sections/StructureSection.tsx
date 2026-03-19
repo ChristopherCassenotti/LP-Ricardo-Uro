@@ -1,61 +1,76 @@
 "use client";
 
 import Image from "next/image";
-import { FaPlay } from "react-icons/fa"; // Importando ícone de biblioteca
+import { FaPlay } from "react-icons/fa";
 
 export default function StructureSection() {
   return (
-    <section 
-      aria-labelledby="structure-title" 
-      className="w-full bg-[#14181F] py-10 flex flex-col items-center overflow-hidden px-10"
+    <section
+      id="estrutura"
+      aria-labelledby="structure-title"
+      className="flex w-full flex-col items-center overflow-hidden bg-[#14181F] px-10 py-10"
     >
-      {/* Cabeçalho Semântico */}
-      <header className="mb-12 text-center px-6" data-aos="fade-up">
+      <header className="mb-12 px-6 text-center" data-aos="fade-up">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-[#008F3C]">
-          Nossa Estrutura
+          Nossa estrutura
         </p>
-        <h2 
+
+        <h2
           id="structure-title"
-          className="font-display text-3xl md:text-5xl font-bold text-white tracking-tight"
+          className="font-display text-3xl font-bold tracking-tight text-white md:text-5xl"
         >
           Conheça nossa <span className="text-[#02C2F2]">estrutura</span>
         </h2>
+
+        <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          Veja mais da estrutura da Green Washer, preparada para atender com
+          eficiência operações de lavanderia industrial e hospitalar com alto
+          padrão de higiene e organização.
+        </p>
       </header>
 
-      {/* Container com Sombra Centralizada e Borda Verde */}
-      <article 
+      <div
         data-aos="zoom-in"
-        className="relative w-[92%] max-w-4xl aspect-video rounded-[28px] overflow-hidden glow-center bg-[#181D23]"
+        className="glow-center relative aspect-video w-[92%] max-w-4xl overflow-hidden rounded-[28px] bg-[#181D23]"
+        aria-labelledby="structure-video-title"
       >
-        {/* Imagem de Fundo (Placeholder) */}
         <Image
-          src="/bo.png" 
-          alt="Visão geral da estrutura física da lavanderia Green Washer"
+          src="/greenWasher.webp"
+          alt="Estrutura física da Green Washer, lavanderia industrial e hospitalar"
           fill
           priority
-          className="object-cover opacity-25"
-          sizes="(max-w-768px) 100vw, 80vw"
+          sizes="(max-width: 768px) 100vw, 80vw"
+          className="object-cover opacity-25 blur-xs"
         />
 
-        {/* Camada de Cor / Overlay */}
-        <div className="absolute inset-0 bg-[#14181F]/40" />
+        <div
+          className="absolute inset-0 bg-[#14181F]/40"
+          aria-hidden="true"
+        />
 
-        {/* Conteúdo Centralizado */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-          
-          {/* Círculo do Play com Ícone da Biblioteca */}
-          <div className="w-16 h-16 md:w-24 md:h-24 mb-6 rounded-full bg-white/5 backdrop-blur-md border opacity-30 border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/10 group cursor-pointer">
-             <FaPlay className="text-[#008F3C] text-2xl md:text-3xl ml-1 transition-transform group-hover:scale-105" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+          <div
+            className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-white/5 opacity-30 backdrop-blur-md md:h-24 md:w-24"
+            aria-hidden="true"
+          >
+            <FaPlay className="ml-1 text-2xl text-[#008F3C] md:text-3xl" />
           </div>
-          
-          <h3 className="absolute text-[#008F3C] text-xl md:text-4xl font-bold tracking-tight text-center drop-shadow-sm">
-            Vídeo disponível em breve!
-          </h3>
-        </div>
-      </article>
 
-      {/* Linha de rodapé com o degradê de referência */}
-      <div className="h-0.5 w-full bg-line-gradient opacity-30 mt-20" />
+          <h3
+            id="structure-video-title"
+            className="text-xl font-bold tracking-tight text-[#008F3C] drop-shadow-sm md:text-4xl"
+          >
+            Vídeo disponível em breve
+          </h3>
+
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-300 md:text-base">
+            Em breve, você poderá conhecer melhor nossa operação, estrutura e
+            processos de higienização profissional.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-20 h-0.5 w-full bg-line-gradient opacity-30" />
     </section>
   );
 }

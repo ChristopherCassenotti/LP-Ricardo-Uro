@@ -2,93 +2,118 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { BiMap, BiCheckCircle, BiTime } from "react-icons/bi";
+import { BiMap, BiCheckCircle } from "react-icons/bi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export default function UnitsSection() {
-  const images = [
-    { src: "/maquina.jpg", alt: "Fachada da Green Washer" },
-    { src: "/maquina.jpg", alt: "Vista lateral" },
-    { src: "/maquina.jpg", alt: "Entrada" },
-    { src: "/maquina.jpg", alt: "Estrutura externa" },
-  ];
-  const [currentImage, setCurrentImage] = useState(0);
+const images = [
+  {
+    src: "/units/1.webp",
+    alt: "Fachada da unidade da Green Washer em Caçador",
+  },
+  {
+    src: "/units/2.webp",
+    alt: "Vista lateral da estrutura da Green Washer",
+  },
+  {
+    src: "/units/3.webp",
+    alt: "Entrada da unidade da Green Washer",
+  },
+  {
+    src: "/units/4.webp",
+    alt: "Estrutura externa da Green Washer em Caçador",
+  },
+];
 
-  const AUTOPLAY_TIME = 4000;
+const AUTOPLAY_TIME = 4000;
+
+export default function UnitsSection() {
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, AUTOPLAY_TIME);
+
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 800 });
+    AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
     <section
       id="unidades"
-      className="py-20 bg-background text-white overflow-hidden px-10"
+      className="overflow-hidden bg-background px-10 py-20 text-white"
+      aria-labelledby="units-title"
     >
       <div className="container mx-auto max-w-7xl">
-        {/* Header da Seção */}
-        <header className="text-center mb-12" data-aos="fade-up">
-          <span className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C] block">
-            Nossas Unidades
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mt-2">
+        <header className="mb-12 text-center" data-aos="fade-up">
+          <p className="mb-4 block text-xs font-bold uppercase tracking-[0.3em] text-[#008F3C]">
+            Nossas unidades
+          </p>
+
+          <h2 id="units-title" className="mt-2 text-4xl font-extrabold md:text-5xl">
             Onde <span className="gradient-text">estamos</span>
           </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-400 md:text-lg">
+            A Green Washer está preparada para atender empresas de Caçador e
+            região com estrutura profissional, logística organizada e alto padrão
+            de higiene em lavanderia industrial e hospitalar.
+          </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* LADO ESQUERDO: INFO E MAPA */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <article
-              className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md relative overflow-hidden group shadow-2xl"
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="flex flex-col gap-6 lg:col-span-5">
+            <div
+              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md"
               data-aos="fade-right"
             >
-              {/* Borda Lateral Gradiente */}
-              <div className="absolute top-0 right-0 w-1.5 h-full rounded-r-3xl">
-                <div className="w-full h-full bg-linear-to-b from-green-500 via-green-400 to-cyan-400 opacity-90"></div>
+              <div
+                className="absolute right-0 top-0 h-full w-1.5 rounded-r-3xl"
+                aria-hidden="true"
+              >
+                <div className="h-full w-full bg-linear-to-b from-green-500 via-green-400 to-cyan-400 opacity-90" />
               </div>
 
-              <div className="flex items-center gap-2 text-green-400 mb-4">
-                <BiCheckCircle className="animate-pulse" size={16} />
+              <div className="mb-4 flex items-center gap-2 text-green-400">
+                <BiCheckCircle className="animate-pulse" size={16} aria-hidden="true" />
                 <span className="text-xs font-bold uppercase tracking-tighter">
-                  Ativa
+                  Unidade ativa
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold mb-3 text-white">
+              <h3 className="mb-3 text-2xl font-bold text-white">
                 Unidade Central
               </h3>
 
-              <div className="flex items-start gap-2 text-slate-300 text-sm mb-4">
-                <BiMap size={20} className="text-green-500 shrink-0" />
-                <p>
-                  Rua Florianópolis, 431, Caçador
-                  <br />
-                  89500-000
-                </p>
-              </div>
+              <address className="mb-4 not-italic">
+                <div className="flex items-start gap-2 text-sm text-slate-300">
+                  <BiMap size={20} className="shrink-0 text-green-500" aria-hidden="true" />
+                  <p>
+                    Rua Florianópolis, 431
+                    <br />
+                    Caçador - SC, 89500-000
+                  </p>
+                </div>
+              </address>
 
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Operação completa com capacidade total de processamento.
+              <p className="text-sm leading-relaxed text-slate-300">
+                Operação completa com estrutura preparada para processamento,
+                higienização e logística de enxovais, uniformes e peças
+                profissionais.
               </p>
-            </article>
+            </div>
 
-            {/* Mapa */}
             <div
-              className="rounded-3xl overflow-hidden border border-white/10 h-115 relative shadow-2xl bg-slate-900"
+              className="relative h-115 overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-2xl"
               data-aos="fade-right"
               data-aos-delay="200"
             >
               <iframe
-                title="Localização Green Washer"
+                title="Mapa com a localização da Green Washer em Caçador"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3554.444!2d-51.012!3d-26.774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQ2JzI2LjQiUyA1McKwMDAnNDMuMiJX!5e0!3m2!1spt-BR!2sbr!4v1"
                 width="100%"
                 height="100%"
@@ -99,34 +124,40 @@ export default function UnitsSection() {
                 }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </div>
 
-          {/* LADO DIREITO: GALERIA COMPLETA */}
-          <aside
-            className="lg:col-span-7 flex flex-col gap-4"
-            data-aos="fade-left"
-          >
-            {/* Imagem Principal */}
-            <figure className="relative rounded-3xl p-2 shadow-2xl shadow-[#19313B] bg-white/5 border border-white/10 w-full">
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl max-h-140 bg-[#0B0F14]">
+          <div className="flex flex-col gap-4 lg:col-span-7" data-aos="fade-left">
+            <figure className="relative w-full rounded-3xl border border-white/10 bg-white/5 p-2 shadow-2xl shadow-[#19313B]">
+              <div className="relative aspect-square w-full max-h-140 overflow-hidden rounded-2xl bg-[#0B0F14]">
                 <Image
                   src={images[currentImage].src}
                   alt={images[currentImage].alt}
                   fill
-                  className="object-cover"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
-              {/* Indicadores Pills */}
-              <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/40 px-3 py-2 backdrop-blur-md border border-white/10">
+              <figcaption className="sr-only">
+                Galeria de imagens da unidade da Green Washer em Caçador.
+              </figcaption>
+
+              <div
+                className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-2 backdrop-blur-md"
+                aria-label="Indicadores da galeria de imagens"
+              >
                 {images.map((_, index) => (
                   <button
                     key={index}
+                    type="button"
                     onClick={() => setCurrentImage(index)}
+                    aria-label={`Mostrar imagem ${index + 1} da unidade`}
+                    aria-pressed={currentImage === index}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       currentImage === index
                         ? "w-6 bg-[#ffffff]"
@@ -137,33 +168,40 @@ export default function UnitsSection() {
               </div>
             </figure>
 
-            {/* Grid de Miniaturas Embaixo da Imagem */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div
+              className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
+              aria-label="Miniaturas da galeria da unidade"
+            >
               {images.map((image, index) => (
                 <button
-                  key={index}
+                  key={image.src}
+                  type="button"
                   onClick={() => setCurrentImage(index)}
-                  className={`relative h-24 overflow-hidden shadow-xl rounded-2xl border p-1 transition-all duration-300 ${
+                  aria-label={`Selecionar imagem ${index + 1} da galeria`}
+                  aria-pressed={currentImage === index}
+                  className={`relative h-24 overflow-hidden rounded-2xl border p-1 shadow-xl transition-all duration-300 ${
                     currentImage === index
                       ? "scale-105 border-[#00CCFF] bg-[#00CCFF]/10"
                       : "border-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <div className="h-full w-full overflow-hidden rounded-xl relative">
+                  <div className="relative h-full w-full overflow-hidden rounded-xl">
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="160px"
                       className="object-cover"
                     />
                   </div>
                 </button>
               ))}
             </div>
-          </aside>
+          </div>
         </div>
       </div>
-      <div className="h-0.5 w-full bg-line-gradient opacity-30 mt-20" />
+
+      <div className="mt-20 h-0.5 w-full bg-line-gradient opacity-30" />
     </section>
   );
 }

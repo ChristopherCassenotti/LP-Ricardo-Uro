@@ -56,7 +56,7 @@ export default function CTASection(){
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
             <Link
-              href="https://wa.me/seunumeroaqui"
+              href="https://wa.me/+554999132974"
               className="bg-[#008F3C] hover:bg-green-700/0 border-[#008F3C] border hover:border-white text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-900/20"
             >
               <FaWhatsapp size={18} />

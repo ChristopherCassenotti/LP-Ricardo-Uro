@@ -1,16 +1,26 @@
 "use client";
 
-import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Benefícios", href: "#beneficios" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Contato", href: "#contato" },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAtHome, setIsAtHome] = useState(true);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,126 +55,132 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full flex flex-row items-center justify-between px-10 py-3 sm:px-20 border-b z-50 transition-all duration-300 ${
+      role="banner"
+      className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b px-10 py-3 transition-all duration-300 sm:px-20 ${
         isAtHome
-          ? "bg-transparent border-transparent"
-          : "bg-background/40 backdrop-blur-md border-white/5"
+          ? "border-transparent bg-transparent"
+          : "border-white/5 bg-background/40 backdrop-blur-md"
       }`}
     >
-      <img
-        src="/logoWasher.webp"
-        alt="Logo da Lavanderia Green Washer"
-        className="w-40 md:w-50"
-      />
+      <Link
+        href="#home"
+        onClick={(e) => handleScrollToSection(e, "#home")}
+        aria-label="Ir para o início da página"
+        className="shrink-0"
+      >
+        <Image
+          src="/logoWasher.webp"
+          alt="Logo da Green Washer"
+          width={180}
+          height={60}
+          priority
+          className="w-40 md:w-50"
+        />
+      </Link>
 
-      <nav className="hidden lg:flex gap-10 text-[#D2D2D2] font-bold text-xl px-5">
-        <Link href="#home" onClick={(e) => handleScrollToSection(e, "#home")}>
-          Home
-        </Link>
-        <Link href="#sobre" onClick={(e) => handleScrollToSection(e, "#sobre")}>
-          Sobre
-        </Link>
-        <Link
-          href="#diferenciais"
-          onClick={(e) => handleScrollToSection(e, "#diferenciais")}
-        >
-          Diferenciais
-        </Link>
-        <Link
-          href="#processo"
-          onClick={(e) => handleScrollToSection(e, "#processo")}
-        >
-          Processo
-        </Link>
-        <Link
-          href="#unidades"
-          onClick={(e) => handleScrollToSection(e, "#unidades")}
-        >
-          Unidade
-        </Link>
-        <Link href="#faq" onClick={(e) => handleScrollToSection(e, "#faq")}>
-          FAQ
-        </Link>
+      <nav
+        aria-label="Navegação principal"
+        className="hidden gap-10 px-5 text-xl font-bold text-[#D2D2D2] lg:flex"
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={(e) => handleScrollToSection(e, link.href)}
+            className="transition-colors duration-300 hover:text-white"
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
 
       <Link
-        href="http://wa.me/+554999132974"
-        className="hidden lg:flex border-2 py-3 rounded-2xl hover:bg-[#008F3C] hover:border-[#008F3C] transition-all duration-300 cursor-pointer"
+        href="https://wa.me/554999132974"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com a Green Washer pelo WhatsApp"
+        className="hidden cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 py-3 transition-all duration-300 hover:border-[#008F3C] hover:bg-[#008F3C] lg:flex"
       >
-        <button className="min-w-40 max-w-50 px-5  flex justify-center gap-2 md:text-md xl:text-xl font-semibold  items-center cursor-pointer">
-          <FaWhatsapp />
-          Fale Conosco
-        </button>
+        <span className="flex min-w-40 max-w-50 items-center justify-center gap-2 px-5 text-md font-semibold xl:text-xl">
+          <FaWhatsapp aria-hidden="true" />
+          Fale conosco
+        </span>
       </Link>
 
       <button
+        type="button"
         onClick={toggleMenu}
-        className="lg:hidden p-2 text-green-700"
-        aria-label="Abrir menu"
+        className="p-2 text-green-700 lg:hidden"
+        aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
       >
         {isOpen ? <IoMdClose size={38} /> : <IoMenu size={45} />}
       </button>
 
       <div
-        className={`
-        fixed inset-0 bg-[#14181F] z-40 transform transition-transform duration-300 ease-in-out
-        ${isOpen ? "translate-x-0" : "translate-x-full"} 
-        lg:hidden
-      `}
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 transform bg-[#14181F] transition-transform duration-300 ease-in-out lg:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-hidden={!isOpen}
       >
-        <nav className="flex flex-col bg-[#14181F] p-10 gap-6 text-xl h-screen font-bold">
-          <button onClick={toggleMenu} className="self-end text-green-700 p-2">
+        <nav
+          aria-label="Menu mobile"
+          className="flex h-screen flex-col gap-6 bg-[#14181F] p-10 text-xl font-bold"
+        >
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="self-end p-2 text-green-700"
+            aria-label="Fechar menu mobile"
+          >
             <IoMdClose size={32} />
           </button>
 
-          <span className="text-sm text-gray-400">
-            Menu <hr className="w-40" />
-          </span>
+          <div className="text-sm text-gray-400">
+            Menu
+            <hr className="w-40" />
+          </div>
 
-          <Link href="#home" onClick={(e) => handleScrollToSection(e, "#home")}>
-            Home
-          </Link>
-          <Link href="#sobre" onClick={(e) => handleScrollToSection(e, "#sobre")}>
-            Sobre
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleScrollToSection(e, link.href)}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="mt-2 text-sm text-gray-400">
+            Contato
+            <hr className="w-40" />
+          </div>
+
           <Link
-            href="#diferenciais"
-            onClick={(e) => handleScrollToSection(e, "#diferenciais")}
+            href="https://wa.me/554999132974"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Falar com a Green Washer pelo WhatsApp"
+            className="flex w-fit rounded-4xl border-2 p-3"
           >
-            Diferenciais
-          </Link>
-          <Link
-            href="#processo"
-            onClick={(e) => handleScrollToSection(e, "#processo")}
-          >
-            Processo
-          </Link>
-          <Link
-            href="#unidades"
-            onClick={(e) => handleScrollToSection(e, "#unidades")}
-          >
-            Unidade
-          </Link>
-          <Link href="#faq" onClick={(e) => handleScrollToSection(e, "#faq")}>
-            FAQ
+            <FaWhatsapp size={30} aria-hidden="true" />
           </Link>
 
-          <span className="text-sm text-gray-400 mt-2">
-            Contato <hr className="w-40" />
-          </span>
-          <Link href="#" className="border-2 w-fit rounded-4xl flex p-3">
-            <button>
-              <FaWhatsapp size={30} />
-            </button>
-          </Link>
+          <div className="mt-2 text-sm text-gray-400">
+            Redes sociais
+            <hr className="w-40" />
+          </div>
 
-          <span className="text-sm text-gray-400 mt-2">
-            Redes Sociais <hr className="w-40" />
-          </span>
-          <Link href="#" className="border-2 w-fit rounded-4xl flex p-3">
-            <button>
-              <FaInstagram size={30} />
-            </button>
+          <Link
+            href="https://www.instagram.com/greenwashercacador/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram da Green Washer"
+            className="flex w-fit rounded-4xl border-2 p-3"
+          >
+            <FaInstagram size={30} aria-hidden="true" />
           </Link>
         </nav>
       </div>
